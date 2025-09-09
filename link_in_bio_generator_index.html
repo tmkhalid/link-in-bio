@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Link-in-bio Generator — Ready to Deploy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .preview-iframe{width:100%;height:520px;border:1px solid #e5e7eb;border-radius:.5rem}
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="max-w-5xl mx-auto p-6">
+    <header class="mb-6">
+      <h1 class="text-2xl font-semibold">Link-in-bio Generator</h1>
+      <p class="text-sm text-gray-500">Enter your name, bio and links — generate a ready-to-deploy page (index.html).</p>
+    </header>
+
+    <main class="grid md:grid-cols-2 gap-6">
+      <section class="bg-white p-4 rounded-lg shadow-sm">
+        <form id="editor" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium">Name / Title</label>
+            <input id="name" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Ex: Anna Smith" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium">Short Bio</label>
+            <input id="bio" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Designer • Maker • Coffee lover" />
+          </div>
+
+          <div id="linksList" class="space-y-2">
+          </div>
+
+          <div class="flex gap-2">
+            <button type="button" id="addLink" class="px-3 py-2 rounded bg-indigo-600 text-white">+ Add Link</button>
+            <button type="button" id="saveLocal" class="px-3 py-2 rounded border">Save Local</button>
+            <button type="button" id="loadLocal" class="px-3 py-2 rounded border">Load Local</button>
+            <button type="button" id="clearLocal" class="px-3 py-2 rounded border text-red-600">Clear</button>
+          </div>
+
+          <div class="pt-2">
+            <label class="block text-sm font-medium">Theme</label>
+            <select id="theme" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="minimal">Minimal</option>
+            </select>
+          </div>
+        </form>
+
+        <div class="mt-4 flex gap-2">
+          <button id="generate" class="px-4 py-2 rounded bg-green-600 text-white">Generate HTML</button>
+          <button id="copyHtml" class="px-4 py-2 rounded border">Copy HTML</button>
+          <a id="downloadBtn" class="px-4 py-2 rounded border" download="link-in-bio.html" href="#">Download</a>
+        </div>
+      </section>
+
+      <section class="bg-white p-4 rounded-lg shadow-sm">
+        <h2 class="font-medium mb-2">Preview</h2>
+        <div id="previewArea" class="p-4 rounded border bg-white">
+          <div id="previewCard" class="text-center">
+            <div class="py-8">
+              <div class="mx-auto w-24 h-24 rounded-full bg-gray-200 mb-4"></div>
+              <h3 id="previewName" class="text-xl font-semibold">Your Name</h3>
+              <p id="previewBio" class="text-sm text-gray-500">Short bio</p>
+            </div>
+            <div id="previewLinks" class="space-y-3 px-6 pb-6"></div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label class="block text-sm font-medium">Full Preview (iframe)</label>
+          <iframe id="previewFrame" class="preview-iframe mt-2"></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-6 text-sm text-gray-500">Tip: Save locally and drag & drop the downloaded file to <strong>Netlify</strong> or use GitHub Pages.</footer>
+  </div>
+
+<script>
+const linksList = document.getElementById('linksList');
+const addLinkBtn = document.getElementById('addLink');
+const previewName = document.getElementById('previewName');
+const previewBio = document.getElementById('previewBio');
+const previewLinks = document.getElementById('previewLinks');
+const previewFrame = document.getElementById('previewFrame');
+const nameInput = document.getElementById('name');
+const bioInput = document.getElementById('bio');
+const themeSelect = document.getElementById('theme');
+const generateBtn = document.getElementById('generate');
+const copyHtmlBtn = document.getElementById('copyHtml');
+const downloadBtn = document.getElementById('downloadBtn');
+const saveLocal = document.getElementById('saveLocal');
+const loadLocal = document.getElementById('loadLocal');
+const clearLocal = document.getElementById('clearLocal');
+
+function makeLinkItem(title='',href=''){
+  const wrapper = document.createElement('div');
+  wrapper.className = 'grid grid-cols-12 gap-2 items-center';
+  wrapper.innerHTML = `
+    <input class="col-span-5 rounded-md border-gray-200 p-2" placeholder="Title" value="${escapeHtml(title)}" data-field="title" />
+    <input class="col-span-6 rounded-md border-gray-200 p-2" placeholder="https://..." value="${escapeHtml(href)}" data-field="href" />
+    <button class="col-span-1 p-2 rounded text-red-600" data-remove>✕</button>
+  `;
+  linksList.appendChild(wrapper);
+  wrapper.querySelector('[data-remove]').addEventListener('click', ()=> wrapper.remove());
+  wrapper.querySelectorAll('input').forEach(inp=> inp.addEventListener('input', renderPreview));
+  return wrapper;
+}
+
+function escapeHtml(s){
+  if(!s) return '';
+  return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+}
+
+addLinkBtn.addEventListener('click', ()=>{ makeLinkItem('Title','https://'); renderPreview(); });
+
+nameInput.addEventListener('input', renderPreview);
+bioInput.addEventListener('input', renderPreview);
+themeSelect.addEventListener('change', renderPreview);
+
+function getData(){
+  const links = [];
+  linksList.querySelectorAll('div').forEach(div=>{
+    const title = div.querySelector('[data-field="title"]').value.trim();
+    const href = div.querySelector('[data-field="href"]').value.trim();
+    if(title && href) links.push({title,href});
+  });
+  return {name: nameInput.value.trim(), bio: bioInput.value.trim(), links, theme: themeSelect.value};
+}
+
+function renderPreview(){
+  const data = getData();
+  previewName.textContent = data.name || 'Your Name';
+  previewBio.textContent = data.bio || 'Short bio';
+  previewLinks.innerHTML = '';
+  data.links.forEach(l=>{
+    const a = document.createElement('a');
+    a.href = l.href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'block py-3 px-4 rounded-lg border text-center font-medium hover:opacity-90';
+    a.textContent = l.title;
+    previewLinks.appendChild(a);
+  });
+
+  const card = document.getElementById('previewCard');
+  if(data.theme === 'dark'){
+    card.classList.add('bg-gray-900','text-white');
+    card.classList.remove('bg-white','text-gray-800');
+    previewLinks.querySelectorAll('a').forEach(a=>{ a.classList.add('bg-gray-800','text-white','border-gray-700'); });
+  } else if(data.theme === 'minimal'){
+    card.classList.remove('bg-gray-900','text-white');
+    card.classList.add('bg-white','text-gray-800');
+    previewLinks.querySelectorAll('a').forEach(a=>{ a.classList.remove('bg-gray-800','text-white'); a.classList.add('border','text-gray-800'); });
+  } else {
+    card.classList.remove('bg-gray-900','text-white');
+    card.classList.add('bg-white','text-gray-800');
+    previewLinks.querySelectorAll('a').forEach(a=>{ a.classList.remove('bg-gray-800','text-white'); a.classList.add('bg-indigo-600','text-white'); });
+  }
+
+  const html = buildFinalHtml(data);
+  previewFrame.srcdoc = html;
+}
+
+function buildFinalHtml(data){
+  const safeName = escapeHtml(data.name || 'Your Name');
+  const safeBio = escapeHtml(data.bio || 'Short bio');
+  const theme = data.theme || 'light';
+  const linksHtml = data.links.map(l=>`<a href="${escapeAttr(l.href)}" target="_blank" rel="noopener" class="link-btn">${escapeHtml(l.title)}</a>`).join('\n');
+
+  const colorBg = theme === 'dark' ? '#0f172a' : '#ffffff';
+  const colorText = theme === 'dark' ? '#ffffff' : '#111827';
+  const linkBg = theme === 'dark' ? '#0b1220' : '#4f46e5';
+  const linkText = '#ffffff';
+
+  return `<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>${safeName} — Links</title>
+    <style>
+      body{font-family:system-ui,Segoe UI,Roboto,Arial;background:${colorBg};color:${colorText};margin:0;padding:40px;display:flex;justify-content:center}
+      .card{max-width:600px;width:100%;text-align:center}
+      .avatar{width:100px;height:100px;border-radius:999px;background:#e5e7eb;margin:0 auto 16px}
+      h1{font-size:22px;margin:0 0 6px}
+      p{margin:0 0 18px;color: ${theme==='dark'? '#cbd5e1':'#6b7280'}}
+      .links{display:flex;flex-direction:column;gap:12px;padding:0 20px}
+      .link-btn{text-decoration:none;padding:14px;border-radius:12px;display:block;background:${linkBg};color:${linkText}}
+      .link-btn:active{opacity:.9}
+      @media (max-width:480px){body{padding:24px}}
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="avatar"></div>
+      <h1>${safeName}</h1>
+      <p>${safeBio}</p>
+      <div class="links">
+        ${linksHtml}
+      </div>
+    </div>
+  </body>
+  </html>`;
+}
+
+function escapeAttr(s){
+  if(!s) return '';
+  return s.replaceAll('"','&quot;').replaceAll("'",'&#39;');
+}
+
+generateBtn.addEventListener('click', ()=>{
+  const data = getData();
+  const html = buildFinalHtml(data);
+  const blob = new Blob([html],{type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  downloadBtn.href = url;
+  downloadBtn.download = (data.name? data.name.replaceAll(' ','-').toLowerCase() : 'link-in-bio') + '.html';
+  window.open(url,'_blank');
+});
+
+copyHtmlBtn.addEventListener('click', async ()=>{
+  const html = buildFinalHtml(getData());
+  await navigator.clipboard.writeText(html);
+  copyHtmlBtn.textContent = 'Copied ✓';
+  setTimeout(()=> copyHtmlBtn.textContent = 'Copy HTML', 1500);
+});
+
+saveLocal.addEventListener('click', ()=>{
+  const data = getData();
+  localStorage.setItem('linkinbio:data', JSON.stringify(data));
+  saveLocal.textContent = 'Saved ✓';
+  setTimeout(()=> saveLocal.textContent = 'Save Local', 1200);
+});
+
+loadLocal.addEventListener('click', ()=>{
+  const raw = localStorage.getItem('linkinbio:data');
+  if(!raw) return alert('No local data found');
+  const d = JSON.parse(raw);
+  nameInput.value = d.name || '';
+  bioInput.value = d.bio || '';
+  themeSelect.value = d.theme || 'light';
+  linksList.innerHTML = '';
+  (d.links||[]).forEach(l=> makeLinkItem(l.title,l.href));
+  renderPreview();
+});
+
+clearLocal.addEventListener('click', ()=>{ localStorage.removeItem('linkinbio:data'); linksList.innerHTML = ''; nameInput.value=''; bioInput.value=''; renderPreview(); });
+
+makeLinkItem('My Website','https://example.com');
+makeLinkItem('Contact','mailto:hello@example.com');
+renderPreview();
+</script>
+</body>
+</html>
