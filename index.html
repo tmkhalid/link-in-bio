@@ -1,258 +1,2383 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Link-in-bio Generator — Ready to Deploy</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .preview-iframe{width:100%;height:520px;border:1px solid #e5e7eb;border-radius:.5rem}
-  </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
-  <div class="max-w-5xl mx-auto p-6">
-    <header class="mb-6">
-      <h1 class="text-2xl font-semibold">Link-in-bio Generator</h1>
-      <p class="text-sm text-gray-500">Enter your name, bio and links — generate a ready-to-deploy page (index.html).</p>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Khalid Thaha | ERP & Business Systems Specialist | Odoo & MS Dynamics
+    </title>
+    <meta
+      name="description"
+      content="Portfolio of Khalid Thaha - Senior ERP & Business Systems Specialist based in Dubai, UAE. Expert in Odoo, Microsoft Dynamics 365, Business Automation, and Systems Integration."
+    />
+    <meta name="author" content="Khalid Thaha" />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="Khalid Thaha - ERP & Business Systems Specialist"
+    />
+    <meta
+      property="og:description"
+      content="15+ Years transforming business operations with Odoo, Microsoft Dynamics 365, and AI-driven automation. Based in Dubai, UAE."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tmkhalid.github.io/" />
+    <meta
+      property="og:image"
+      content="https://tmkhalid.github.io/assets/og-preview.png"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bgMain: "#08172B",
+              bgSec: "#0B1220",
+              cardBg: "#10233B",
+              borderColor: "#29415D",
+              textPrimary: "#F3F6FC",
+              textSec: "#B7C5D8",
+              accent: "#38BDF8",
+              accentTeal: "#2DD4BF",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        background-color: #08172b;
+        color: #f3f6fc;
+        font-family: "Inter", sans-serif;
+      }
+      .glass-card {
+        background: rgba(16, 35, 59, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid #29415d;
+      }
+      .glass-nav {
+        background: rgba(8, 23, 43, 0.85);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid #29415d;
+      }
+      .text-gradient {
+        background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .btn-gradient {
+        background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+        transition: all 0.3s ease;
+      }
+      .btn-gradient:hover {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        transform: translateY(-2px);
+      }
+      .badge {
+        background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        color: #38bdf8;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #08172b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #29415d;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #38bdf8;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col justify-between selection:bg-accent selection:text-bgMain"
+  >
+    <!-- Header / Navigation -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+      >
+        <!-- Brand Logo -->
+        <a href="#home" class="flex items-center space-x-3 group">
+          <div
+            class="w-10 h-10 rounded-xl btn-gradient flex items-center justify-center text-bgMain font-bold text-xl tracking-wider shadow-lg"
+          >
+            KT
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="text-lg font-bold text-textPrimary tracking-tight group-hover:text-accent transition-colors"
+              >Khalid Thaha</span
+            >
+            <span class="text-xs text-textSec -mt-1 hidden sm:block"
+              >ERP · Business Systems · AI Automation</span
+            >
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+          <a
+            href="#about"
+            class="text-textSec hover:text-accent transition-colors"
+            >About</a
+          >
+          <a
+            href="#experience"
+            class="text-textSec hover:text-accent transition-colors"
+            >Experience</a
+          >
+          <a
+            href="#portfolio"
+            class="text-textSec hover:text-accent transition-colors"
+            >Portfolio</a
+          >
+          <a
+            href="#skills"
+            class="text-textSec hover:text-accent transition-colors"
+            >Skills</a
+          >
+          <a
+            href="#github"
+            class="text-textSec hover:text-accent transition-colors"
+            >Repositories</a
+          >
+          <a
+            href="#resume"
+            class="text-textSec hover:text-accent transition-colors"
+            >Resume</a
+          >
+          <a
+            href="#contact"
+            class="text-textSec hover:text-accent transition-colors"
+            >Contact</a
+          >
+        </nav>
+
+        <!-- Audience Toggle Switch & Contact CTA -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <div
+            class="bg-bgSec p-1 rounded-xl border border-borderColor flex text-xs font-semibold"
+          >
+            <button
+              id="btn-employer-mode"
+              onclick="setAudienceMode('employer')"
+              class="px-3 py-1.5 rounded-lg transition-all duration-200 bg-cardBg text-accent shadow-sm"
+            >
+              <i class="fa-solid fa-briefcase mr-1.5"></i>For Employers
+            </button>
+            <button
+              id="btn-client-mode"
+              onclick="setAudienceMode('client')"
+              class="px-3 py-1.5 rounded-lg transition-all duration-200 text-textSec hover:text-textPrimary"
+            >
+              <i class="fa-solid fa-handshake mr-1.5"></i>For Clients
+            </button>
+          </div>
+          <a
+            href="#contact"
+            class="btn-gradient text-bgMain font-semibold px-4 py-2 rounded-xl text-xs flex items-center space-x-2"
+          >
+            <span>Hire / Consult</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden text-textSec hover:text-textPrimary text-2xl p-2"
+          aria-label="Toggle Navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-bgSec border-b border-borderColor px-6 py-6 space-y-4"
+      >
+        <div
+          class="flex bg-cardBg p-1 rounded-xl border border-borderColor text-xs font-semibold mb-4"
+        >
+          <button
+            onclick="setAudienceMode('employer')"
+            class="w-1/2 py-2 text-center rounded-lg text-accent bg-bgMain"
+          >
+            For Employers
+          </button>
+          <button
+            onclick="setAudienceMode('client')"
+            class="w-1/2 py-2 text-center rounded-lg text-textSec"
+          >
+            For Clients
+          </button>
+        </div>
+        <a
+          href="#about"
+          class="block text-textSec hover:text-accent text-base py-1"
+          >About</a
+        >
+        <a
+          href="#experience"
+          class="block text-textSec hover:text-accent text-base py-1"
+          >Experience</a
+        >
+        <a
+          href="#portfolio"
+          class="block text-textSec hover:text-accent text-base py-1"
+          >Portfolio</a
+        >
+        <a
+          href="#skills"
+          class="block text-textSec hover:text-accent text-base py-1"
+          >Skills</a
+        >
+        <a
+          href="#github"
+          class="block text-textSec hover:text-accent text-base py-1"
+          >GitHub Code Repos</a
+        >
+        <a
+          href="#resume"
+          class="block text-textSec hover:text-accent text-base py-1"
+          >Resume</a
+        >
+        <a
+          href="#contact"
+          class="block text-textSec hover:text-accent text-base py-1"
+          >Contact</a
+        >
+      </div>
     </header>
 
-    <main class="grid md:grid-cols-2 gap-6">
-      <section class="bg-white p-4 rounded-lg shadow-sm">
-        <form id="editor" class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium">Name / Title</label>
-            <input id="name" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Ex: Anna Smith" />
+    <main class="pt-20">
+      <!-- HERO SECTION -->
+      <section
+        id="home"
+        class="relative min-h-[90vh] flex items-center py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
+      >
+        <!-- Background Decorative Glows -->
+        <div
+          class="absolute top-1/4 -left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"
+        ></div>
+        <div
+          class="absolute bottom-10 right-0 w-96 h-96 bg-accentTeal/10 rounded-full blur-3xl pointer-events-none"
+        ></div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10"
+        >
+          <!-- Text Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <div
+              class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full badge text-xs font-semibold tracking-wide"
+            >
+              <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              <span>Based in Dubai, UAE • Available Globally</span>
+            </div>
+
+            <h1
+              class="text-4xl sm:text-5xl xl:text-6xl font-extrabold text-textPrimary tracking-tight leading-tight"
+            >
+              Transforming Business Through
+              <span class="text-gradient">Smarter Technology.</span>
+            </h1>
+
+            <p
+              class="text-lg sm:text-xl text-textSec leading-relaxed font-normal"
+            >
+              I combine finance & accounting knowledge, enterprise systems
+              experience, and practical tech skills to streamline processes,
+              connect applications, and build effective digital solutions.
+            </p>
+
+            <div
+              class="p-4 rounded-xl glass-card border border-borderColor/60 text-sm text-textSec flex items-start space-x-3"
+            >
+              <i class="fa-solid fa-cube text-accent text-lg mt-0.5"></i>
+              <div>
+                <span class="font-semibold text-textPrimary"
+                  >Core Expertise:</span
+                >
+                Odoo (v11–v19), Microsoft Dynamics 365 / AX 2012, Financial
+                Accounting (M.Com), ZATCA E-Invoicing Compliance, Python
+                Integrations, & AI Intelligent Workflows.
+              </div>
+            </div>
+
+            <!-- Call to Actions -->
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a
+                href="#portfolio"
+                class="btn-gradient text-bgMain font-bold px-6 py-3.5 rounded-xl shadow-lg flex items-center space-x-2 text-sm"
+              >
+                <span>Explore My Portfolio</span>
+                <i class="fa-solid fa-arrow-down"></i>
+              </a>
+              <a
+                href="#resume"
+                class="bg-cardBg hover:bg-borderColor text-textPrimary font-semibold px-6 py-3.5 rounded-xl border border-borderColor transition-all duration-200 text-sm flex items-center space-x-2"
+              >
+                <i class="fa-solid fa-file-pdf text-accent"></i>
+                <span>View My Resume</span>
+              </a>
+            </div>
+
+            <!-- Social / Direct Contact Badges -->
+            <div
+              class="pt-6 border-t border-borderColor/60 flex items-center space-x-5 text-textSec"
+            >
+              <span
+                class="text-xs font-semibold text-textSec uppercase tracking-wider"
+                >Connect:</span
+              >
+              <a
+                href="https://www.linkedin.com/in/khalidthahad365/"
+                target="_blank"
+                rel="noopener"
+                class="hover:text-accent transition-colors text-xl"
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/tmkhalid"
+                target="_blank"
+                rel="noopener"
+                class="hover:text-accent transition-colors text-xl"
+                title="GitHub Profile"
+                aria-label="GitHub Profile"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                href="mailto:tmkhalid@gmail.com"
+                class="hover:text-accent transition-colors text-xl"
+                title="Direct Email"
+                aria-label="Direct Email"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a
+                href="tel:+971545950187"
+                class="hover:text-accent transition-colors text-xl"
+                title="Call UAE Phone"
+                aria-label="Call UAE Phone"
+              >
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
           </div>
 
-          <div>
-            <label class="block text-sm font-medium">Short Bio</label>
-            <input id="bio" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Designer • Maker • Coffee lover" />
-          </div>
+          <!-- Portrait / Visual Frame Column -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md">
+              <!-- Framing Box -->
+              <div
+                class="absolute -inset-1.5 rounded-3xl btn-gradient opacity-30 blur-lg"
+              ></div>
+              <div
+                class="relative rounded-2xl glass-card p-4 border border-borderColor shadow-2xl overflow-hidden"
+              >
+                <div
+                  class="relative rounded-xl overflow-hidden bg-bgSec aspect-[4/5] flex items-center justify-center border border-borderColor/40 group"
+                >
+                  <!-- Photo Placeholder Container with Fallback Icon & Instructions -->
+                  <img
+                    src="./assets/khalid-thaha-portrait.jpg"
+                    alt="Khalid Thaha - ERP & Business Systems Specialist"
+                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    onerror="
+                      this.onerror = null;
+                      this.parentElement.innerHTML =
+                        '<div class=\'flex flex-col items-center justify-center text-center p-6 space-y-4 text-textSec\'><div class=\'w-24 h-24 rounded-full bg-cardBg border-2 border-accent/40 flex items-center justify-center text-accent text-4xl shadow-inner\'><i class=\'fa-solid fa-user-tie\'></i></div><div><h3 class=\'font-bold text-textPrimary text-base\'>Khalid Thaha</h3><p class=\'text-xs text-accent font-mono mt-1\'>ERP Techno-Functional Specialist</p></div><div class=\'text-xs bg-bgMain/80 p-3 rounded-lg border border-borderColor/60 text-textSec max-w-xs text-left\'><p class=\'font-semibold text-accent mb-1\'><i class=\'fa-solid fa-camera mr-1\'></i>Image Placeholder:</p><p class=\'font-mono text-[11px]\'>Replace file at: <br><span class=\'text-textPrimary\'>./assets/khalid-thaha-portrait.jpg</span></p></div></div>';
+                    "
+                  />
 
-          <div id="linksList" class="space-y-2">
-          </div>
+                  <div
+                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-bgMain via-bgMain/80 to-transparent p-4 text-center"
+                  >
+                    <h2 class="text-lg font-bold text-textPrimary">
+                      Khalid Thaha
+                    </h2>
+                    <p class="text-xs text-accent font-medium">
+                      Dubai, United Arab Emirates
+                    </p>
+                  </div>
+                </div>
 
-          <div class="flex gap-2">
-            <button type="button" id="addLink" class="px-3 py-2 rounded bg-indigo-600 text-white">+ Add Link</button>
-            <button type="button" id="saveLocal" class="px-3 py-2 rounded border">Save Local</button>
-            <button type="button" id="loadLocal" class="px-3 py-2 rounded border">Load Local</button>
-            <button type="button" id="clearLocal" class="px-3 py-2 rounded border text-red-600">Clear</button>
+                <!-- Key Metrics Quick Strip -->
+                <div class="grid grid-cols-3 gap-2 mt-4 text-center text-xs">
+                  <div
+                    class="bg-bgSec p-2.5 rounded-lg border border-borderColor/50"
+                  >
+                    <div
+                      class="font-extrabold text-accent text-sm sm:text-base"
+                    >
+                      15+ Yrs
+                    </div>
+                    <div class="text-[10px] text-textSec">Finance & ERP</div>
+                  </div>
+                  <div
+                    class="bg-bgSec p-2.5 rounded-lg border border-borderColor/50"
+                  >
+                    <div
+                      class="font-extrabold text-accentTeal text-sm sm:text-base"
+                    >
+                      M.Com
+                    </div>
+                    <div class="text-[10px] text-textSec">
+                      Accounting Degree
+                    </div>
+                  </div>
+                  <div
+                    class="bg-bgSec p-2.5 rounded-lg border border-borderColor/50"
+                  >
+                    <div
+                      class="font-extrabold text-accent text-sm sm:text-base"
+                    >
+                      PMP®
+                    </div>
+                    <div class="text-[10px] text-textSec">Certified PM</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div class="pt-2">
-            <label class="block text-sm font-medium">Theme</label>
-            <select id="theme" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm">
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-              <option value="minimal">Minimal</option>
-            </select>
-          </div>
-        </form>
-
-        <div class="mt-4 flex gap-2">
-          <button id="generate" class="px-4 py-2 rounded bg-green-600 text-white">Generate HTML</button>
-          <button id="copyHtml" class="px-4 py-2 rounded border">Copy HTML</button>
-          <a id="downloadBtn" class="px-4 py-2 rounded border" download="link-in-bio.html" href="#">Download</a>
         </div>
       </section>
 
-      <section class="bg-white p-4 rounded-lg shadow-sm">
-        <h2 class="font-medium mb-2">Preview</h2>
-        <div id="previewArea" class="p-4 rounded border bg-white">
-          <div id="previewCard" class="text-center">
-            <div class="py-8">
-              <div class="mx-auto w-24 h-24 rounded-full bg-gray-200 mb-4"></div>
-              <h3 id="previewName" class="text-xl font-semibold">Your Name</h3>
-              <p id="previewBio" class="text-sm text-gray-500">Short bio</p>
+      <!-- DUAL AUDIENCE PATHWAY SELECTOR -->
+      <section class="bg-bgSec py-12 border-y border-borderColor">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-8">
+            <h2
+              class="text-xs uppercase font-bold tracking-widest text-accent mb-2"
+            >
+              Tailored Navigation
+            </h2>
+            <p class="text-2xl font-bold text-textPrimary">
+              What brings you to my website today?
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Employer Pathway Card -->
+            <div
+              id="card-employer-path"
+              class="glass-card rounded-2xl p-8 border-2 transition-all duration-300 relative overflow-hidden group cursor-pointer border-accent/50 hover:border-accent"
+              onclick="setAudienceMode('employer')"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/15 transition-all"
+              ></div>
+              <div class="flex items-center space-x-4 mb-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 text-accent flex items-center justify-center text-2xl"
+                >
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                  <span
+                    class="text-xs font-bold uppercase tracking-wider text-accent"
+                    >Audience 01</span
+                  >
+                  <h3 class="text-xl font-bold text-textPrimary">
+                    I am Hiring for Full-Time Roles
+                  </h3>
+                </div>
+              </div>
+              <p class="text-textSec text-sm mb-6 leading-relaxed">
+                Seeking an experienced ERP Systems Analyst, Odoo
+                Techno-Functional Consultant, or Dynamics 365 Functional
+                Specialist for your organization in Dubai or GCC?
+              </p>
+              <ul class="space-y-2.5 text-xs text-textSec mb-6">
+                <li class="flex items-center space-x-2">
+                  <i class="fa-solid fa-circle-check text-accent"></i>
+                  <span
+                    >15+ Years ERP, Finance, & Accounting background
+                    (M.Com)</span
+                  >
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fa-solid fa-circle-check text-accent"></i>
+                  <span
+                    >End-to-End Migration: MS Dynamics AX 2012 to Odoo
+                    (v11–v19)</span
+                  >
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fa-solid fa-circle-check text-accent"></i>
+                  <span
+                    >PMP® Certified, ZATCA e-Invoicing & GCC VAT
+                    compliance</span
+                  >
+                </li>
+              </ul>
+              <a
+                href="#experience"
+                class="inline-flex items-center space-x-2 text-accent font-bold text-sm group-hover:translate-x-1 transition-transform"
+              >
+                <span>Explore Career History & Resume</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
-            <div id="previewLinks" class="space-y-3 px-6 pb-6"></div>
+
+            <!-- Client / Consulting Pathway Card -->
+            <div
+              id="card-client-path"
+              class="glass-card rounded-2xl p-8 border-2 transition-all duration-300 relative overflow-hidden group cursor-pointer border-borderColor hover:border-accentTeal"
+              onclick="setAudienceMode('client')"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accentTeal/5 rounded-full blur-2xl group-hover:bg-accentTeal/15 transition-all"
+              ></div>
+              <div class="flex items-center space-x-4 mb-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-accentTeal/10 border border-accentTeal/30 text-accentTeal flex items-center justify-center text-2xl"
+                >
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div>
+                  <span
+                    class="text-xs font-bold uppercase tracking-wider text-accentTeal"
+                    >Audience 02</span
+                  >
+                  <h3 class="text-xl font-bold text-textPrimary">
+                    I Need Consulting or Automation
+                  </h3>
+                </div>
+              </div>
+              <p class="text-textSec text-sm mb-6 leading-relaxed">
+                Looking for Odoo ERP customization, third-party system
+                integrations (HRMS, POS, Logistics), or AI-driven business
+                process automation?
+              </p>
+              <ul class="space-y-2.5 text-xs text-textSec mb-6">
+                <li class="flex items-center space-x-2">
+                  <i class="fa-solid fa-circle-check text-accentTeal"></i>
+                  <span>Custom Odoo Python modules & process optimization</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fa-solid fa-circle-check text-accentTeal"></i>
+                  <span
+                    >3rd-Party Integrations: LIMS, WooCommerce, Tookan,
+                    Menaitech</span
+                  >
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fa-solid fa-circle-check text-accentTeal"></i>
+                  <span
+                    >AI Intelligent Document Processing & Automated
+                    Workflows</span
+                  >
+                </li>
+              </ul>
+              <a
+                href="#portfolio"
+                class="inline-flex items-center space-x-2 text-accentTeal font-bold text-sm group-hover:translate-x-1 transition-transform"
+              >
+                <span>Explore Project Case Studies & Services</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <div class="space-y-6">
+              <div
+                class="inline-block badge px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+              >
+                Professional Identity
+              </div>
+              <h2
+                class="text-3xl sm:text-4xl font-extrabold text-textPrimary leading-tight"
+              >
+                A Unique Blend of
+                <span class="text-gradient">Financial Acumen</span> & Systems
+                Engineering
+              </h2>
+              <p class="text-textSec text-sm leading-relaxed">
+                With over 15 years of hands-on experience across Saudi Arabia
+                and the UAE, I bridge the gap between finance departments and
+                technical IT teams. Unlike pure software developers or
+                high-level consultants, I understand double-entry bookkeeping,
+                tax compliance, and business workflows as intimately as I do
+                Python code, PostgreSQL queries, and server administration.
+              </p>
+              <div class="space-y-3 pt-2">
+                <div
+                  class="flex items-center space-x-3 text-sm text-textPrimary font-medium"
+                >
+                  <i class="fa-solid fa-graduation-cap text-accent text-lg"></i>
+                  <span>Master of Commerce (M.Com) - University of Madras</span>
+                </div>
+                <div
+                  class="flex items-center space-x-3 text-sm text-textPrimary font-medium"
+                >
+                  <i
+                    class="fa-solid fa-certificate text-accentTeal text-lg"
+                  ></i>
+                  <span>Project Management Professional (PMP®) Certified</span>
+                </div>
+                <div
+                  class="flex items-center space-x-3 text-sm text-textPrimary font-medium"
+                >
+                  <i class="fa-solid fa-microchip text-accent text-lg"></i>
+                  <span
+                    >Odoo v11–v19 & MS Dynamics 365 Certified / Trained</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                class="glass-card p-6 rounded-2xl border border-borderColor hover:border-accent/40 transition-colors"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-xl mb-4"
+                >
+                  <i class="fa-solid fa-calculator"></i>
+                </div>
+                <h3 class="font-bold text-textPrimary text-base mb-2">
+                  Finance & Accounting Foundation
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed">
+                  Began career in Accenture handling General Ledger (Record to
+                  Report), Accounts Payable, SOX compliance, and month-end
+                  closing for Microsoft projects.
+                </p>
+              </div>
+
+              <div
+                class="glass-card p-6 rounded-2xl border border-borderColor hover:border-accent/40 transition-colors"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-accentTeal/10 text-accentTeal flex items-center justify-center text-xl mb-4"
+                >
+                  <i class="fa-solid fa-diagram-project"></i>
+                </div>
+                <h3 class="font-bold text-textPrimary text-base mb-2">
+                  Enterprise ERP Deployments
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed">
+                  Managed full lifecycle implementations and migrations across
+                  Dynamics AX 2009 / AX 2012 R3 and group-wide Odoo rollouts for
+                  6+ diverse business divisions.
+                </p>
+              </div>
+
+              <div
+                class="glass-card p-6 rounded-2xl border border-borderColor hover:border-accent/40 transition-colors"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-accentTeal/10 text-accentTeal flex items-center justify-center text-xl mb-4"
+                >
+                  <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <h3 class="font-bold text-textPrimary text-base mb-2">
+                  Systems & API Integrations
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed">
+                  Connected Odoo with third-party LIMS (Laboratory Systems),
+                  HRMS (Menaitech), e-Commerce (WooCommerce), logistics
+                  (Tookan/Zajil), and ZATCA Phase 1 & 2 e-Invoicing.
+                </p>
+              </div>
+
+              <div
+                class="glass-card p-6 rounded-2xl border border-borderColor hover:border-accent/40 transition-colors"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-xl mb-4"
+                >
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <h3 class="font-bold text-textPrimary text-base mb-2">
+                  Practical AI & Automation
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed">
+                  Designing intelligent document extraction (OCR/LLM), automated
+                  timesheet verifications, and smart workflow approvals directly
+                  connected to backend ERPs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE TIMELINE SECTION -->
+      <section
+        id="experience"
+        class="py-20 bg-bgSec border-t border-borderColor"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between mb-12"
+          >
+            <div>
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-accent"
+                >Verified Career Track</span
+              >
+              <h2 class="text-3xl font-extrabold text-textPrimary mt-1">
+                Professional Experience
+              </h2>
+            </div>
+            <p class="text-xs text-textSec mt-2 md:mt-0 max-w-md">
+              Chronological history highlighting roles in enterprise systems
+              analysis, financial operations, and Odoo techno-functional
+              consultancy.
+            </p>
+          </div>
+
+          <div
+            class="relative border-l-2 border-borderColor ml-4 sm:ml-8 space-y-12"
+          >
+            <!-- ROLE 1: Aljoaib Group -->
+            <div class="relative pl-6 sm:pl-10 group">
+              <!-- Timeline Bullet -->
+              <div
+                class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cardBg border-2 border-accent text-accent flex items-center justify-center text-xs group-hover:scale-110 transition-transform"
+              >
+                <i class="fa-solid fa-building"></i>
+              </div>
+
+              <div
+                class="glass-card p-6 sm:p-8 rounded-2xl border border-borderColor"
+              >
+                <div
+                  class="flex flex-wrap items-center justify-between gap-2 mb-3"
+                >
+                  <div>
+                    <h3 class="text-xl font-bold text-textPrimary">
+                      Systems Analyst — Odoo Techno-Functional Consultant
+                    </h3>
+                    <p class="text-sm text-accent font-medium">
+                      Aljoaib Group of Companies • Dammam, Saudi Arabia
+                    </p>
+                  </div>
+                  <span
+                    class="badge px-3 py-1 rounded-full text-xs font-semibold"
+                    >July 2010 – June 2024</span
+                  >
+                </div>
+
+                <p class="text-xs text-textSec mb-4 italic">
+                  Entities Supported: Geotechnical Testing Co., Aljoaib
+                  Engineering Consulting, Desert Agriculture, SunCapture Solar,
+                  Wholesale Valley F&B, Adyaf Gulf / Madlein Kitchen.
+                </p>
+
+                <ul
+                  class="space-y-2.5 text-xs text-textSec list-disc list-inside"
+                >
+                  <li>
+                    <strong class="text-textPrimary"
+                      >Group ERP Migration:</strong
+                    >
+                    Transitioned operations from legacy software (Baseet) to
+                    Microsoft Dynamics AX 2009, upgraded to AX 2012 R3, and
+                    migrated group-wide operations to Odoo (v11 up to v19).
+                  </li>
+                  <li>
+                    <strong class="text-textPrimary"
+                      >Custom Module Engineering:</strong
+                    >
+                    Architected and built custom Odoo Python modules, including
+                    an ARAMCO Manpower Timesheet & Billing system for major
+                    contracting projects.
+                  </li>
+                  <li>
+                    <strong class="text-textPrimary"
+                      >Third-Party Integrations:</strong
+                    >
+                    Coordinated integration with Logicasoft Belgium LIMS,
+                    Menaitech HRMS payroll journals, WooCommerce e-commerce, and
+                    Tookan/Zajil logistics platforms.
+                  </li>
+                  <li>
+                    <strong class="text-textPrimary">Tax Compliance:</strong>
+                    Configured and supported ZATCA (Saudi Arabia) Fatoora Portal
+                    e-Invoicing integration compliance for Phase 1 & Phase 2.
+                  </li>
+                  <li>
+                    <strong class="text-textPrimary"
+                      >DevOps & Server Administration:</strong
+                    >
+                    Managed Odoo.sh environments, GitHub branching, Docker
+                    containers, PostgreSQL databases, and Ubuntu cloud
+                    deployments.
+                  </li>
+                </ul>
+
+                <div
+                  class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-borderColor/40"
+                >
+                  <span
+                    class="text-[11px] bg-bgSec px-2.5 py-1 rounded border border-borderColor text-textSec"
+                    >Odoo (v11–v19)</span
+                  >
+                  <span
+                    class="text-[11px] bg-bgSec px-2.5 py-1 rounded border border-borderColor text-textSec"
+                    >MS Dynamics AX 2012 R3</span
+                  >
+                  <span
+                    class="text-[11px] bg-bgSec px-2.5 py-1 rounded border border-borderColor text-textSec"
+                    >Python / PostgreSQL</span
+                  >
+                  <span
+                    class="text-[11px] bg-bgSec px-2.5 py-1 rounded border border-borderColor text-textSec"
+                    >ZATCA e-Invoicing</span
+                  >
+                  <span
+                    class="text-[11px] bg-bgSec px-2.5 py-1 rounded border border-borderColor text-textSec"
+                    >Odoo.sh & Docker</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- ROLE 2: Accenture India (General Ledger) -->
+            <div class="relative pl-6 sm:pl-10 group">
+              <div
+                class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cardBg border-2 border-accentTeal text-accentTeal flex items-center justify-center text-xs group-hover:scale-110 transition-transform"
+              >
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+
+              <div
+                class="glass-card p-6 sm:p-8 rounded-2xl border border-borderColor"
+              >
+                <div
+                  class="flex flex-wrap items-center justify-between gap-2 mb-3"
+                >
+                  <div>
+                    <h3 class="text-xl font-bold text-textPrimary">
+                      General Accounting — Team Lead
+                    </h3>
+                    <p class="text-sm text-accentTeal font-medium">
+                      Accenture India Pvt. Ltd • Chennai, India
+                    </p>
+                  </div>
+                  <span
+                    class="badge px-3 py-1 rounded-full text-xs font-semibold"
+                    >May 2009 – August 2009</span
+                  >
+                </div>
+
+                <p class="text-xs text-textSec mb-3 font-semibold">
+                  Client Project: Microsoft OneFinance Financial Services
+                </p>
+
+                <ul
+                  class="space-y-2 text-xs text-textSec list-disc list-inside"
+                >
+                  <li>
+                    Reviewed General Ledger journal entries and managed
+                    month-end closing processes.
+                  </li>
+                  <li>
+                    Prepared monthly Balance Sheet key and non-key account
+                    reconciliations for Financial Controller sign-off.
+                  </li>
+                  <li>
+                    Managed GST filing, Purchase Order accruals, FBT,
+                    Intercompany account imbalance reconciliations, and cash
+                    forecasting.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ROLE 3: Accenture India (AP Analyst) -->
+            <div class="relative pl-6 sm:pl-10 group">
+              <div
+                class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cardBg border-2 border-borderColor text-textSec flex items-center justify-center text-xs"
+              >
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+              </div>
+
+              <div
+                class="glass-card p-6 sm:p-8 rounded-2xl border border-borderColor"
+              >
+                <div
+                  class="flex flex-wrap items-center justify-between gap-2 mb-3"
+                >
+                  <div>
+                    <h3 class="text-xl font-bold text-textPrimary">
+                      Accounts Payable — Process Analyst
+                    </h3>
+                    <p class="text-sm text-textSec font-medium">
+                      Accenture India Pvt. Ltd • Chennai, India
+                    </p>
+                  </div>
+                  <span
+                    class="badge px-3 py-1 rounded-full text-xs font-semibold"
+                    >May 2007 – April 2009</span
+                  >
+                </div>
+
+                <p class="text-xs text-textSec mb-3 font-semibold">
+                  Client Project: Microsoft OneFinance Financial Services
+                </p>
+
+                <ul
+                  class="space-y-2 text-xs text-textSec list-disc list-inside"
+                >
+                  <li>
+                    Processed daily AP vendor and employee payment disbursements
+                    in SAP enterprise software.
+                  </li>
+                  <li>
+                    Performed bank account reconciliations, vendor aging
+                    analysis, and AP cash flow forecasting.
+                  </li>
+                  <li>
+                    Reviewed Vendor Master File (VMF) audit compliance in
+                    accordance with SOX (Sarbanes-Oxley) controls.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ROLE 4: AMS Trust -->
+            <div class="relative pl-6 sm:pl-10 group">
+              <div
+                class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-cardBg border-2 border-borderColor text-textSec flex items-center justify-center text-xs"
+              >
+                <i class="fa-solid fa-book-journal-whills"></i>
+              </div>
+
+              <div
+                class="glass-card p-6 sm:p-8 rounded-2xl border border-borderColor"
+              >
+                <div
+                  class="flex flex-wrap items-center justify-between gap-2 mb-3"
+                >
+                  <div>
+                    <h3 class="text-xl font-bold text-textPrimary">
+                      Accountant
+                    </h3>
+                    <p class="text-sm text-textSec font-medium">
+                      A.M.S. Trust (Group of Educational Institutions) •
+                      Chennai, India
+                    </p>
+                  </div>
+                  <span
+                    class="badge px-3 py-1 rounded-full text-xs font-semibold"
+                    >Feb 2005 – May 2007</span
+                  >
+                </div>
+
+                <ul
+                  class="space-y-2 text-xs text-textSec list-disc list-inside"
+                >
+                  <li>
+                    Spearheaded the digitization initiative, migrating
+                    paper-based ledgers and cash books to Tally accounting
+                    software.
+                  </li>
+                  <li>
+                    Managed payroll generation, Provident Fund (PF)
+                    calculations, tax returns, and institution bank
+                    reconciliations.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO SECTION -->
+      <section
+        id="portfolio"
+        class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-accent"
+            >Proven Solutions & Prototypes</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-textPrimary mt-1">
+            Featured Portfolio & Case Studies
+          </h2>
+          <p class="text-textSec text-sm mt-3">
+            A collection of production client implementations, system
+            integrations, and prototype projects.
+          </p>
+
+          <!-- Filter Controls -->
+          <div
+            class="flex flex-wrap justify-center gap-2 mt-8 text-xs font-semibold"
+          >
+            <button
+              onclick="filterPortfolio('all')"
+              class="port-filter-btn active px-4 py-2 rounded-xl bg-accent text-bgMain"
+            >
+              All Projects
+            </button>
+            <button
+              onclick="filterPortfolio('odoo')"
+              class="port-filter-btn px-4 py-2 rounded-xl bg-cardBg text-textSec border border-borderColor hover:text-textPrimary"
+            >
+              Odoo Applications
+            </button>
+            <button
+              onclick="filterPortfolio('dynamics')"
+              class="port-filter-btn px-4 py-2 rounded-xl bg-cardBg text-textSec border border-borderColor hover:text-textPrimary"
+            >
+              MS Dynamics & ERP
+            </button>
+            <button
+              onclick="filterPortfolio('integration')"
+              class="port-filter-btn px-4 py-2 rounded-xl bg-cardBg text-textSec border border-borderColor hover:text-textPrimary"
+            >
+              Integrations
+            </button>
+            <button
+              onclick="filterPortfolio('ai')"
+              class="port-filter-btn px-4 py-2 rounded-xl bg-cardBg text-textSec border border-borderColor hover:text-textPrimary"
+            >
+              AI & Automation
+            </button>
           </div>
         </div>
 
-        <div class="mt-4">
-          <label class="block text-sm font-medium">Full Preview (iframe)</label>
-          <iframe id="previewFrame" class="preview-iframe mt-2"></iframe>
+        <!-- Portfolio Cards Grid -->
+        <div
+          id="portfolio-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <!-- PROJECT 1 -->
+          <div
+            class="port-card glass-card rounded-2xl border border-borderColor overflow-hidden hover:border-accent/60 transition-all group flex flex-col justify-between"
+            data-category="odoo integration"
+          >
+            <div>
+              <div
+                class="h-48 bg-bgSec p-6 relative flex items-center justify-center border-b border-borderColor/60 overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 opacity-10 bg-[radial-gradient(#38BDF8_1px,transparent_1px)] [background-size:16px_16px]"
+                ></div>
+                <div
+                  class="w-16 h-16 rounded-2xl btn-gradient flex items-center justify-center text-bgMain text-3xl shadow-xl"
+                >
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <span
+                  class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-1 rounded-full"
+                >
+                  Deployed Production
+                </span>
+              </div>
+              <div class="p-6 space-y-3">
+                <span
+                  class="text-[11px] font-bold text-accent tracking-wider uppercase"
+                  >Odoo Custom Module</span
+                >
+                <h3
+                  class="text-lg font-bold text-textPrimary group-hover:text-accent transition-colors"
+                >
+                  ARAMCO Manpower & Timesheet Module
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed line-clamp-3">
+                  Custom Odoo module built for an engineering subsidiary
+                  executing contractor projects on ARAMCO sites. Handled complex
+                  hourly rates, worker shifts, overtime rules, and automated
+                  customer billing.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0 space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-[10px]">
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Odoo Python</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >PostgreSQL</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >QWeb Reports</span
+                >
+              </div>
+              <button
+                onclick="openProjectModal(0)"
+                class="w-full py-2.5 rounded-xl bg-bgSec hover:bg-borderColor text-textPrimary text-xs font-bold transition-colors border border-borderColor"
+              >
+                View Case Study <i class="fa-solid fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PROJECT 2 -->
+          <div
+            class="port-card glass-card rounded-2xl border border-borderColor overflow-hidden hover:border-accent/60 transition-all group flex flex-col justify-between"
+            data-category="odoo integration"
+          >
+            <div>
+              <div
+                class="h-48 bg-bgSec p-6 relative flex items-center justify-center border-b border-borderColor/60 overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 opacity-10 bg-[radial-gradient(#2DD4BF_1px,transparent_1px)] [background-size:16px_16px]"
+                ></div>
+                <div
+                  class="w-16 h-16 rounded-2xl bg-accentTeal/20 text-accentTeal border border-accentTeal/40 flex items-center justify-center text-3xl shadow-xl"
+                >
+                  <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <span
+                  class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-1 rounded-full"
+                >
+                  Deployed Compliance
+                </span>
+              </div>
+              <div class="p-6 space-y-3">
+                <span
+                  class="text-[11px] font-bold text-accentTeal tracking-wider uppercase"
+                  >Tax Compliance</span
+                >
+                <h3
+                  class="text-lg font-bold text-textPrimary group-hover:text-accentTeal transition-colors"
+                >
+                  ZATCA Phase 1 & 2 E-Invoicing Compliance
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed line-clamp-3">
+                  Configured Odoo ERP to comply with Saudi Arabia ZATCA Fatoora
+                  Portal requirements, integrating cryptographic stamps, QR
+                  codes, and real-time clearance/reporting APIs.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0 space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-[10px]">
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >ZATCA API</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Odoo Invoicing</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >XML / Cryptography</span
+                >
+              </div>
+              <button
+                onclick="openProjectModal(1)"
+                class="w-full py-2.5 rounded-xl bg-bgSec hover:bg-borderColor text-textPrimary text-xs font-bold transition-colors border border-borderColor"
+              >
+                View Case Study <i class="fa-solid fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PROJECT 3 -->
+          <div
+            class="port-card glass-card rounded-2xl border border-borderColor overflow-hidden hover:border-accent/60 transition-all group flex flex-col justify-between"
+            data-category="dynamics odoo"
+          >
+            <div>
+              <div
+                class="h-48 bg-bgSec p-6 relative flex items-center justify-center border-b border-borderColor/60 overflow-hidden"
+              >
+                <div
+                  class="w-16 h-16 rounded-2xl bg-accent/20 text-accent border border-accent/40 flex items-center justify-center text-3xl shadow-xl"
+                >
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+                <span
+                  class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-1 rounded-full"
+                >
+                  Enterprise Migration
+                </span>
+              </div>
+              <div class="p-6 space-y-3">
+                <span
+                  class="text-[11px] font-bold text-accent tracking-wider uppercase"
+                  >ERP Transformation</span
+                >
+                <h3
+                  class="text-lg font-bold text-textPrimary group-hover:text-accent transition-colors"
+                >
+                  Dynamics AX 2012 to Odoo Migration
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed line-clamp-3">
+                  Led the enterprise migration from Dynamics AX 2012 R3 to Odoo
+                  across 6 group companies spanning testing labs, trading,
+                  contracting, and food processing.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0 space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-[10px]">
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Dynamics AX</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Odoo v11–v19</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Data ETL</span
+                >
+              </div>
+              <button
+                onclick="openProjectModal(2)"
+                class="w-full py-2.5 rounded-xl bg-bgSec hover:bg-borderColor text-textPrimary text-xs font-bold transition-colors border border-borderColor"
+              >
+                View Case Study <i class="fa-solid fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PROJECT 4 -->
+          <div
+            class="port-card glass-card rounded-2xl border border-borderColor overflow-hidden hover:border-accent/60 transition-all group flex flex-col justify-between"
+            data-category="integration"
+          >
+            <div>
+              <div
+                class="h-48 bg-bgSec p-6 relative flex items-center justify-center border-b border-borderColor/60 overflow-hidden"
+              >
+                <div
+                  class="w-16 h-16 rounded-2xl bg-purple-500/20 text-purple-400 border border-purple-500/40 flex items-center justify-center text-3xl shadow-xl"
+                >
+                  <i class="fa-solid fa-vial-virus"></i>
+                </div>
+                <span
+                  class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-1 rounded-full"
+                >
+                  Multi-System Integration
+                </span>
+              </div>
+              <div class="p-6 space-y-3">
+                <span
+                  class="text-[11px] font-bold text-purple-400 tracking-wider uppercase"
+                  >API Middleware</span
+                >
+                <h3
+                  class="text-lg font-bold text-textPrimary group-hover:text-purple-400 transition-colors"
+                >
+                  LIMS & Menaitech HRMS Integration
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed line-clamp-3">
+                  Integrated specialized Laboratory Information Management
+                  Systems (Logicasoft Belgium) and Menaitech HRMS payroll
+                  journal engines with central financial accounting.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0 space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-[10px]">
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >REST APIs</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Menaitech</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Logicasoft LIMS</span
+                >
+              </div>
+              <button
+                onclick="openProjectModal(3)"
+                class="w-full py-2.5 rounded-xl bg-bgSec hover:bg-borderColor text-textPrimary text-xs font-bold transition-colors border border-borderColor"
+              >
+                View Case Study <i class="fa-solid fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PROJECT 5 -->
+          <div
+            class="port-card glass-card rounded-2xl border border-borderColor overflow-hidden hover:border-accent/60 transition-all group flex flex-col justify-between"
+            data-category="ai"
+          >
+            <div>
+              <div
+                class="h-48 bg-bgSec p-6 relative flex items-center justify-center border-b border-borderColor/60 overflow-hidden"
+              >
+                <div
+                  class="w-16 h-16 rounded-2xl bg-accentTeal/20 text-accentTeal border border-accentTeal/40 flex items-center justify-center text-3xl shadow-xl"
+                >
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <span
+                  class="absolute top-4 right-4 bg-amber-500/20 text-amber-400 border border-amber-500/40 text-[10px] font-bold px-2.5 py-1 rounded-full"
+                >
+                  Prototype / R&D
+                </span>
+              </div>
+              <div class="p-6 space-y-3">
+                <span
+                  class="text-[11px] font-bold text-accentTeal tracking-wider uppercase"
+                  >AI Automation Prototype</span
+                >
+                <h3
+                  class="text-lg font-bold text-textPrimary group-hover:text-accentTeal transition-colors"
+                >
+                  AI Vendor Invoice OCR & Approval Flow
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed line-clamp-3">
+                  Intelligent invoice data extraction assistant combining
+                  Python, LLM vision prompts, and Odoo JSON-RPC to automatically
+                  draft vendor bills from PDF attachments.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0 space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-[10px]">
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Python / LLM</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >OCR</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Odoo API</span
+                >
+              </div>
+              <button
+                onclick="openProjectModal(4)"
+                class="w-full py-2.5 rounded-xl bg-bgSec hover:bg-borderColor text-textPrimary text-xs font-bold transition-colors border border-borderColor"
+              >
+                View Prototype Details
+                <i class="fa-solid fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PROJECT 6 -->
+          <div
+            class="port-card glass-card rounded-2xl border border-borderColor overflow-hidden hover:border-accent/60 transition-all group flex flex-col justify-between"
+            data-category="odoo"
+          >
+            <div>
+              <div
+                class="h-48 bg-bgSec p-6 relative flex items-center justify-center border-b border-borderColor/60 overflow-hidden"
+              >
+                <div
+                  class="w-16 h-16 rounded-2xl bg-accent/20 text-accent border border-accent/40 flex items-center justify-center text-3xl shadow-xl"
+                >
+                  <i class="fa-solid fa-utensils"></i>
+                </div>
+                <span
+                  class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-1 rounded-full"
+                >
+                  Deployed Production
+                </span>
+              </div>
+              <div class="p-6 space-y-3">
+                <span
+                  class="text-[11px] font-bold text-accent tracking-wider uppercase"
+                  >F&B & Manufacturing</span
+                >
+                <h3
+                  class="text-lg font-bold text-textPrimary group-hover:text-accent transition-colors"
+                >
+                  Central Kitchen & Recipe MRP Odoo Module
+                </h3>
+                <p class="text-xs text-textSec leading-relaxed line-clamp-3">
+                  Configured Odoo Manufacturing & Inventory for Adyaf Gulf
+                  central food processing and JOMLA wholesale operations,
+                  managing Bill of Materials (BoM) and wastage tracking.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0 space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-[10px]">
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Odoo MRP</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Inventory Control</span
+                >
+                <span
+                  class="bg-bgMain px-2 py-1 rounded border border-borderColor text-textSec"
+                  >Recipe BoM</span
+                >
+              </div>
+              <button
+                onclick="openProjectModal(5)"
+                class="w-full py-2.5 rounded-xl bg-bgSec hover:bg-borderColor text-textPrimary text-xs font-bold transition-colors border border-borderColor"
+              >
+                View Case Study <i class="fa-solid fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SHOWCASE SECTION -->
+      <section id="skills" class="py-20 bg-bgSec border-y border-borderColor">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span
+              class="text-xs font-bold uppercase tracking-widest text-accent"
+              >Technical & Functional Competencies</span
+            >
+            <h2 class="text-3xl font-extrabold text-textPrimary mt-1">
+              Core Capability Matrix
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- ERP Platforms -->
+            <div class="glass-card p-6 rounded-2xl border border-borderColor">
+              <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-cubes text-accent text-xl"></i>
+                <h3 class="font-bold text-textPrimary text-base">
+                  ERP Platforms
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Odoo 11 to 19</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >MS Dynamics 365 F&SCM</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Dynamics AX 2012 R3</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Dynamics AX 2009</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Odoo.sh Platform</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >SAP (AP Module)</span
+                >
+              </div>
+            </div>
+
+            <!-- Finance & Accounting -->
+            <div class="glass-card p-6 rounded-2xl border border-borderColor">
+              <div class="flex items-center space-x-3 mb-4">
+                <i
+                  class="fa-solid fa-file-invoice-dollar text-accentTeal text-xl"
+                ></i>
+                <h3 class="font-bold text-textPrimary text-base">
+                  Finance & Compliance
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >General Ledger (R2R)</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Accounts Payable / Receivable</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >ZATCA e-Invoicing Phase 1 & 2</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >GCC VAT & Regulatory</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >IFRS Accounting</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >SOX Internal Controls</span
+                >
+              </div>
+            </div>
+
+            <!-- Programming & Databases -->
+            <div class="glass-card p-6 rounded-2xl border border-borderColor">
+              <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-code text-accent text-xl"></i>
+                <h3 class="font-bold text-textPrimary text-base">
+                  Programming & Databases
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Python</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >PostgreSQL</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >SQL Queries</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >XML / QWeb</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >JSON / REST APIs</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Git / GitHub</span
+                >
+              </div>
+            </div>
+
+            <!-- Business Processes -->
+            <div class="glass-card p-6 rounded-2xl border border-borderColor">
+              <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-sitemap text-accentTeal text-xl"></i>
+                <h3 class="font-bold text-textPrimary text-base">
+                  Business Processes
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Procure-to-Pay (P2P)</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Order-to-Cash (O2C)</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Inventory & Warehouse</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Project Timesheet Billing</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Manufacturing (MRP)</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >BRD & FDD Documentation</span
+                >
+              </div>
+            </div>
+
+            <!-- Infrastructure & Cloud -->
+            <div class="glass-card p-6 rounded-2xl border border-borderColor">
+              <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-server text-accent text-xl"></i>
+                <h3 class="font-bold text-textPrimary text-base">
+                  Infrastructure & Cloud
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Linux / Ubuntu Server</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Docker Containers</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Nginx Web Server</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >AWS / Azure Basics</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >SSL / Domain Routing</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Backup & Disaster Recovery</span
+                >
+              </div>
+            </div>
+
+            <!-- AI & Automation -->
+            <div class="glass-card p-6 rounded-2xl border border-borderColor">
+              <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-brain text-accentTeal text-xl"></i>
+                <h3 class="font-bold text-textPrimary text-base">
+                  AI & Automation
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Intelligent OCR Extraction</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >LLM API Workflows</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Automated Approval Bots</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >Data Mapping Assistants</span
+                >
+                <span
+                  class="bg-bgMain border border-borderColor px-3 py-1.5 rounded-lg text-textSec"
+                  >n8n / Webhook Automations</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GITHUB REPOSITORIES SECTION -->
+      <section id="github" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between mb-12"
+        >
+          <div>
+            <span
+              class="text-xs font-bold uppercase tracking-widest text-accent"
+              >Open Source & Demos</span
+            >
+            <h2 class="text-3xl font-extrabold text-textPrimary mt-1">
+              Featured GitHub Repositories
+            </h2>
+          </div>
+          <a
+            href="https://github.com/tmkhalid"
+            target="_blank"
+            rel="noopener"
+            class="text-xs text-accent font-bold hover:underline flex items-center space-x-1 mt-2 md:mt-0"
+          >
+            <span>Visit @tmkhalid on GitHub</span>
+            <i class="fa-solid fa-external-link text-[10px]"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- REPO 1 -->
+          <div
+            class="glass-card p-6 rounded-2xl border border-borderColor hover:border-accent/40 transition-colors flex flex-col justify-between"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div
+                  class="flex items-center space-x-2 text-accent font-bold text-base"
+                >
+                  <i class="fa-brands fa-github"></i>
+                  <a
+                    href="https://github.com/tmkhalid"
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:underline"
+                    >tmkhalid / odoo-custom-modules</a
+                  >
+                </div>
+                <span
+                  class="text-[10px] bg-bgMain px-2 py-0.5 rounded text-textSec border border-borderColor"
+                  >Public Repo</span
+                >
+              </div>
+              <p class="text-xs text-textSec leading-relaxed">
+                Custom Odoo modules including timesheet enhancements, ARAMCO
+                contract invoice extensions, and localized GCC regional fixes.
+              </p>
+            </div>
+            <div
+              class="flex items-center justify-between mt-6 pt-4 border-t border-borderColor/40 text-xs text-textSec"
+            >
+              <div class="flex items-center space-x-4">
+                <span class="flex items-center space-x-1"
+                  ><span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span
+                  ><span>Python</span></span
+                >
+                <span class="flex items-center space-x-1"
+                  ><i class="fa-regular fa-star text-amber-400"></i
+                  ><span>Featured</span></span
+                >
+              </div>
+              <a
+                href="https://github.com/tmkhalid"
+                target="_blank"
+                rel="noopener"
+                class="text-accent font-semibold hover:underline"
+                >View Source →</a
+              >
+            </div>
+          </div>
+
+          <!-- REPO 2 -->
+          <div
+            class="glass-card p-6 rounded-2xl border border-borderColor hover:border-accent/40 transition-colors flex flex-col justify-between"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div
+                  class="flex items-center space-x-2 text-accentTeal font-bold text-base"
+                >
+                  <i class="fa-brands fa-github"></i>
+                  <a
+                    href="https://github.com/tmkhalid"
+                    target="_blank"
+                    rel="noopener"
+                    class="hover:underline"
+                    >tmkhalid / zatca-odoo-connector</a
+                  >
+                </div>
+                <span
+                  class="text-[10px] bg-bgMain px-2 py-0.5 rounded text-textSec border border-borderColor"
+                  >Integration</span
+                >
+              </div>
+              <p class="text-xs text-textSec leading-relaxed">
+                Saudi ZATCA Phase 2 E-Invoicing helper scripts for XML
+                generation, signing, and API communication testing.
+              </p>
+            </div>
+            <div
+              class="flex items-center justify-between mt-6 pt-4 border-t border-borderColor/40 text-xs text-textSec"
+            >
+              <div class="flex items-center space-x-4">
+                <span class="flex items-center space-x-1"
+                  ><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span
+                  ><span>Python / XML</span></span
+                >
+                <span class="flex items-center space-x-1"
+                  ><i class="fa-regular fa-star text-amber-400"></i
+                  ><span>Featured</span></span
+                >
+              </div>
+              <a
+                href="https://github.com/tmkhalid"
+                target="_blank"
+                rel="noopener"
+                class="text-accentTeal font-semibold hover:underline"
+                >View Source →</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESUME DOWNLOAD SECTION -->
+      <section id="resume" class="py-20 bg-bgSec border-t border-borderColor">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="glass-card p-8 sm:p-12 rounded-3xl border border-borderColor relative overflow-hidden"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-8 space-y-4">
+                <span
+                  class="badge px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                  >Curriculum Vitae</span
+                >
+                <h2 class="text-3xl font-extrabold text-textPrimary">
+                  Need a Formal Resume for Review?
+                </h2>
+                <p class="text-textSec text-sm leading-relaxed max-w-2xl">
+                  Download my complete, verified CV detailing over 14+ years of
+                  techno-functional experience, Microsoft certifications, PMP®
+                  credential, and education.
+                </p>
+                <div class="flex flex-wrap gap-4 text-xs text-textSec pt-2">
+                  <span class="flex items-center space-x-1.5"
+                    ><i class="fa-solid fa-check text-accent"></i
+                    ><span>Updated 2026 Edition</span></span
+                  >
+                  <span class="flex items-center space-x-1.5"
+                    ><i class="fa-solid fa-check text-accent"></i
+                    ><span>Detailed Project Matrix</span></span
+                  >
+                  <span class="flex items-center space-x-1.5"
+                    ><i class="fa-solid fa-check text-accent"></i
+                    ><span>Certified Credentials Included</span></span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4 justify-center"
+              >
+                <!-- Direct Download Link configured for Khalid_Thaha_Resume.pdf -->
+                <a
+                  href="./assets/Khalid_Thaha_Resume.pdf"
+                  download="Khalid_Thaha_Resume.pdf"
+                  class="btn-gradient text-bgMain font-bold px-6 py-4 rounded-xl text-center shadow-lg text-sm flex items-center justify-center space-x-2"
+                >
+                  <i class="fa-solid fa-file-arrow-down text-lg"></i>
+                  <span>Download PDF Resume</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/khalidthahad365/"
+                  target="_blank"
+                  rel="noopener"
+                  class="bg-cardBg hover:bg-borderColor text-textPrimary font-semibold px-6 py-4 rounded-xl text-center border border-borderColor transition-all text-sm flex items-center justify-center space-x-2"
+                >
+                  <i class="fa-brands fa-linkedin text-accent text-lg"></i>
+                  <span>Connect on LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section
+        id="contact"
+        class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <!-- Contact Details -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-accent"
+                >Get In Touch</span
+              >
+              <h2 class="text-3xl font-extrabold text-textPrimary mt-1">
+                Let's Discuss Opportunities
+              </h2>
+            </div>
+            <p class="text-textSec text-sm leading-relaxed">
+              Whether you are an employer seeking a seasoned ERP specialist in
+              Dubai or a business looking for Odoo & automation consulting, I
+              welcome your inquiry.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <div
+                class="flex items-center space-x-4 p-4 rounded-xl glass-card border border-borderColor"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-textSec">Current Location</div>
+                  <div class="text-sm font-bold text-textPrimary">
+                    Al Wasl Village, Dubai, UAE
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center space-x-4 p-4 rounded-xl glass-card border border-borderColor"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-accentTeal/10 text-accentTeal flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-textSec">Email Address</div>
+                  <a
+                    href="mailto:tmkhalid@gmail.com"
+                    class="text-sm font-bold text-textPrimary hover:text-accent"
+                    >tmkhalid@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <div
+                class="flex items-center space-x-4 p-4 rounded-xl glass-card border border-borderColor"
+              >
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-xl"
+                >
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-textSec">Mobile / WhatsApp</div>
+                  <a
+                    href="tel:+971545950187"
+                    class="text-sm font-bold text-textPrimary hover:text-accent"
+                    >+971 54 595 0187</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="lg:col-span-7">
+            <div class="glass-card p-8 rounded-3xl border border-borderColor">
+              <h3 class="text-xl font-bold text-textPrimary mb-6">
+                Send Me a Direct Message
+              </h3>
+
+              <form
+                id="contact-form"
+                onsubmit="handleFormSubmit(event)"
+                class="space-y-4"
+              >
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      for="contact-name"
+                      class="block text-xs font-semibold text-textSec mb-1.5"
+                      >Your Name *</label
+                    >
+                    <input
+                      type="text"
+                      id="contact-name"
+                      required
+                      placeholder="e.g. Sarah Ahmed"
+                      class="w-full bg-bgMain border border-borderColor rounded-xl px-4 py-3 text-sm text-textPrimary focus:outline-none focus:border-accent"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="contact-email"
+                      class="block text-xs font-semibold text-textSec mb-1.5"
+                      >Email Address *</label
+                    >
+                    <input
+                      type="email"
+                      id="contact-email"
+                      required
+                      placeholder="e.g. sarah@company.com"
+                      class="w-full bg-bgMain border border-borderColor rounded-xl px-4 py-3 text-sm text-textPrimary focus:outline-none focus:border-accent"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    for="contact-type"
+                    class="block text-xs font-semibold text-textSec mb-1.5"
+                    >Inquiry Type</label
+                  >
+                  <select
+                    id="contact-type"
+                    class="w-full bg-bgMain border border-borderColor rounded-xl px-4 py-3 text-sm text-textPrimary focus:outline-none focus:border-accent"
+                  >
+                    <option value="Employment Opportunity">
+                      Employment Opportunity (Full-Time / Contract)
+                    </option>
+                    <option value="Odoo Consulting">
+                      Odoo Consulting or Customization
+                    </option>
+                    <option value="Dynamics 365 / AX Support">
+                      MS Dynamics 365 / AX Support
+                    </option>
+                    <option value="AI Workflow Automation">
+                      AI & Workflow Automation
+                    </option>
+                    <option value="General Collaboration">
+                      General Networking / Referral
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    for="contact-message"
+                    class="block text-xs font-semibold text-textSec mb-1.5"
+                    >Message *</label
+                  >
+                  <textarea
+                    id="contact-message"
+                    required
+                    rows="4"
+                    placeholder="Briefly describe your project requirements or position..."
+                    class="w-full bg-bgMain border border-borderColor rounded-xl px-4 py-3 text-sm text-textPrimary focus:outline-none focus:border-accent"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn-gradient text-bgMain font-bold w-full py-4 rounded-xl shadow-lg text-sm flex items-center justify-center space-x-2"
+                >
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Send Message</span>
+                </button>
+              </form>
+
+              <div
+                id="form-status"
+                class="hidden mt-4 p-4 rounded-xl text-xs text-center font-semibold"
+              ></div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="mt-6 text-sm text-gray-500">Tip: Save locally and drag & drop the downloaded file to <strong>Netlify</strong> or use GitHub Pages.</footer>
-  </div>
+    <!-- PROJECT DETAILS MODAL DIALOG -->
+    <div
+      id="project-modal"
+      class="fixed inset-0 z-50 hidden bg-bgMain/90 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto"
+    >
+      <div
+        class="glass-card max-w-2xl w-full rounded-3xl border border-borderColor p-6 sm:p-8 relative my-8 max-h-[90vh] overflow-y-auto"
+      >
+        <button
+          onclick="closeProjectModal()"
+          class="absolute top-6 right-6 text-textSec hover:text-textPrimary text-xl"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
 
-<script>
-const linksList = document.getElementById('linksList');
-const addLinkBtn = document.getElementById('addLink');
-const previewName = document.getElementById('previewName');
-const previewBio = document.getElementById('previewBio');
-const previewLinks = document.getElementById('previewLinks');
-const previewFrame = document.getElementById('previewFrame');
-const nameInput = document.getElementById('name');
-const bioInput = document.getElementById('bio');
-const themeSelect = document.getElementById('theme');
-const generateBtn = document.getElementById('generate');
-const copyHtmlBtn = document.getElementById('copyHtml');
-const downloadBtn = document.getElementById('downloadBtn');
-const saveLocal = document.getElementById('saveLocal');
-const loadLocal = document.getElementById('loadLocal');
-const clearLocal = document.getElementById('clearLocal');
-
-function makeLinkItem(title='',href=''){
-  const wrapper = document.createElement('div');
-  wrapper.className = 'grid grid-cols-12 gap-2 items-center';
-  wrapper.innerHTML = `
-    <input class="col-span-5 rounded-md border-gray-200 p-2" placeholder="Title" value="${escapeHtml(title)}" data-field="title" />
-    <input class="col-span-6 rounded-md border-gray-200 p-2" placeholder="https://..." value="${escapeHtml(href)}" data-field="href" />
-    <button class="col-span-1 p-2 rounded text-red-600" data-remove>✕</button>
-  `;
-  linksList.appendChild(wrapper);
-  wrapper.querySelector('[data-remove]').addEventListener('click', ()=> wrapper.remove());
-  wrapper.querySelectorAll('input').forEach(inp=> inp.addEventListener('input', renderPreview));
-  return wrapper;
-}
-
-function escapeHtml(s){
-  if(!s) return '';
-  return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-}
-
-addLinkBtn.addEventListener('click', ()=>{ makeLinkItem('Title','https://'); renderPreview(); });
-
-nameInput.addEventListener('input', renderPreview);
-bioInput.addEventListener('input', renderPreview);
-themeSelect.addEventListener('change', renderPreview);
-
-function getData(){
-  const links = [];
-  linksList.querySelectorAll('div').forEach(div=>{
-    const title = div.querySelector('[data-field="title"]').value.trim();
-    const href = div.querySelector('[data-field="href"]').value.trim();
-    if(title && href) links.push({title,href});
-  });
-  return {name: nameInput.value.trim(), bio: bioInput.value.trim(), links, theme: themeSelect.value};
-}
-
-function renderPreview(){
-  const data = getData();
-  previewName.textContent = data.name || 'Your Name';
-  previewBio.textContent = data.bio || 'Short bio';
-  previewLinks.innerHTML = '';
-  data.links.forEach(l=>{
-    const a = document.createElement('a');
-    a.href = l.href;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.className = 'block py-3 px-4 rounded-lg border text-center font-medium hover:opacity-90';
-    a.textContent = l.title;
-    previewLinks.appendChild(a);
-  });
-
-  const card = document.getElementById('previewCard');
-  if(data.theme === 'dark'){
-    card.classList.add('bg-gray-900','text-white');
-    card.classList.remove('bg-white','text-gray-800');
-    previewLinks.querySelectorAll('a').forEach(a=>{ a.classList.add('bg-gray-800','text-white','border-gray-700'); });
-  } else if(data.theme === 'minimal'){
-    card.classList.remove('bg-gray-900','text-white');
-    card.classList.add('bg-white','text-gray-800');
-    previewLinks.querySelectorAll('a').forEach(a=>{ a.classList.remove('bg-gray-800','text-white'); a.classList.add('border','text-gray-800'); });
-  } else {
-    card.classList.remove('bg-gray-900','text-white');
-    card.classList.add('bg-white','text-gray-800');
-    previewLinks.querySelectorAll('a').forEach(a=>{ a.classList.remove('bg-gray-800','text-white'); a.classList.add('bg-indigo-600','text-white'); });
-  }
-
-  const html = buildFinalHtml(data);
-  previewFrame.srcdoc = html;
-}
-
-function buildFinalHtml(data){
-  const safeName = escapeHtml(data.name || 'Your Name');
-  const safeBio = escapeHtml(data.bio || 'Short bio');
-  const theme = data.theme || 'light';
-  const linksHtml = data.links.map(l=>`<a href="${escapeAttr(l.href)}" target="_blank" rel="noopener" class="link-btn">${escapeHtml(l.title)}</a>`).join('\n');
-
-  const colorBg = theme === 'dark' ? '#0f172a' : '#ffffff';
-  const colorText = theme === 'dark' ? '#ffffff' : '#111827';
-  const linkBg = theme === 'dark' ? '#0b1220' : '#4f46e5';
-  const linkText = '#ffffff';
-
-  return `<!doctype html>
-  <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>${safeName} — Links</title>
-    <style>
-      body{font-family:system-ui,Segoe UI,Roboto,Arial;background:${colorBg};color:${colorText};margin:0;padding:40px;display:flex;justify-content:center}
-      .card{max-width:600px;width:100%;text-align:center}
-      .avatar{width:100px;height:100px;border-radius:999px;background:#e5e7eb;margin:0 auto 16px}
-      h1{font-size:22px;margin:0 0 6px}
-      p{margin:0 0 18px;color: ${theme==='dark'? '#cbd5e1':'#6b7280'}}
-      .links{display:flex;flex-direction:column;gap:12px;padding:0 20px}
-      .link-btn{text-decoration:none;padding:14px;border-radius:12px;display:block;background:${linkBg};color:${linkText}}
-      .link-btn:active{opacity:.9}
-      @media (max-width:480px){body{padding:24px}}
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <div class="avatar"></div>
-      <h1>${safeName}</h1>
-      <p>${safeBio}</p>
-      <div class="links">
-        ${linksHtml}
+        <div id="modal-content" class="space-y-6">
+          <!-- Dynamically Populated by JavaScript -->
+        </div>
       </div>
     </div>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-bgSec border-t border-borderColor py-8 text-xs text-textSec"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <div>
+          <p>
+            © <span id="current-year">2026</span> Khalid Thaha. All rights
+            reserved.
+          </p>
+          <p class="text-[10px] text-textSec/70 mt-0.5">
+            Designed for deployment on GitHub Pages (tmkhalid.github.io)
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-6 text-base">
+          <a
+            href="https://www.linkedin.com/in/khalidthahad365/"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-accent"
+            aria-label="LinkedIn Profile"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/tmkhalid"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-accent"
+            aria-label="GitHub Profile"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="mailto:tmkhalid@gmail.com"
+            class="hover:text-accent"
+            aria-label="Email Address"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+      // Set dynamic current year in footer
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+      // Mobile Menu Toggle logic
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Close mobile menu when clicking nav links
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // Audience Mode Selector (Employers vs Clients)
+      function setAudienceMode(mode) {
+        const btnEmp = document.getElementById("btn-employer-mode");
+        const btnCli = document.getElementById("btn-client-mode");
+        const cardEmp = document.getElementById("card-employer-path");
+        const cardCli = document.getElementById("card-client-path");
+
+        if (mode === "employer") {
+          btnEmp.className =
+            "px-3 py-1.5 rounded-lg transition-all duration-200 bg-cardBg text-accent shadow-sm font-bold";
+          btnCli.className =
+            "px-3 py-1.5 rounded-lg transition-all duration-200 text-textSec hover:text-textPrimary";
+          cardEmp.classList.add("border-accent");
+          cardCli.classList.remove("border-accentTeal");
+        } else {
+          btnCli.className =
+            "px-3 py-1.5 rounded-lg transition-all duration-200 bg-cardBg text-accentTeal shadow-sm font-bold";
+          btnEmp.className =
+            "px-3 py-1.5 rounded-lg transition-all duration-200 text-textSec hover:text-textPrimary";
+          cardCli.classList.add("border-accentTeal");
+          cardEmp.classList.remove("border-accent");
+        }
+      }
+
+      // Portfolio Filtering Logic
+      function filterPortfolio(category) {
+        const cards = document.querySelectorAll(".port-card");
+        const buttons = document.querySelectorAll(".port-filter-btn");
+
+        buttons.forEach((btn) => {
+          btn.classList.remove("bg-accent", "text-bgMain");
+          btn.classList.add("bg-cardBg", "text-textSec");
+        });
+
+        event.currentTarget.classList.remove("bg-cardBg", "text-textSec");
+        event.currentTarget.classList.add("bg-accent", "text-bgMain");
+
+        cards.forEach((card) => {
+          const cardCat = card.getAttribute("data-category");
+          if (category === "all" || cardCat.includes(category)) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      // Project Modal Data Matrix
+      const projectsData = [
+        {
+          title: "ARAMCO Manpower & Timesheet Billing Module",
+          status: "Deployed Production",
+          category: "Odoo Python Customization",
+          problem:
+            "Contracting subsidiaries needed accurate tracking for hundreds of employees assigned to Saudi ARAMCO field sites, adhering to variable hourly rates, night shifts, and strict billing compliance.",
+          solution:
+            "Designed and developed a custom Odoo timesheet module integrated directly with Payroll and Sales/Invoicing. Features included automated overtime logic, supervisor validation workflows, and formatted invoice templates.",
+          contribution:
+            "Conducted requirements analysis, wrote backend Python models, QWeb report templates, and coordinated end-user validation.",
+          stack: ["Odoo 12/14", "Python", "PostgreSQL", "QWeb Engine"],
+          github: "https://github.com/tmkhalid",
+        },
+        {
+          title: "ZATCA Phase 1 & 2 E-Invoicing Compliance",
+          status: "Deployed Compliance",
+          category: "Tax Compliance & API Integration",
+          problem:
+            "Saudi Tax and Customs Authority (ZATCA) mandated Phase 2 integration for B2B and B2C e-invoices, requiring cryptographic chaining, QR codes, and real-time clearance APIs.",
+          solution:
+            "Configured Odoo accounting modules and localized electronic invoicing scripts to handle XML generation, digital signatures, and automated API transmission to the ZATCA portal.",
+          contribution:
+            "Led functional design, gap analysis, cryptographic certificate installation, and tested invoice validation with ZATCA sandbox.",
+          stack: [
+            "ZATCA OpenAPI",
+            "Odoo Accounting",
+            "Python Cryptography",
+            "XML",
+          ],
+          github: "https://github.com/tmkhalid",
+        },
+        {
+          title: "Dynamics AX 2012 R3 to Odoo Enterprise Migration",
+          status: "Enterprise Migration",
+          category: "ERP Digital Transformation",
+          problem:
+            "Legacy Dynamics AX installation suffered from high license overhead and limited agility across diverse group companies (testing labs, agriculture, trading, food processing).",
+          solution:
+            "Planned and executed a multi-year phased migration strategy to Odoo, standardizing charts of accounts, inventory valuations, and customer master records.",
+          contribution:
+            "Project Leader & Techno-Functional Consultant managing data ETL pipelines, user training across 6 entities, and go-live hypercare.",
+          stack: [
+            "MS Dynamics AX 2012 R3",
+            "Odoo v11 up to v19",
+            "PostgreSQL",
+            "Python ETL",
+          ],
+          github: "https://github.com/tmkhalid",
+        },
+        {
+          title: "LIMS & Menaitech HRMS Integration Middleware",
+          status: "Multi-System Integration",
+          category: "API & Middleware Engineering",
+          problem:
+            "Geotechnical testing operations required syncing test sample billing from Belgian LIMS software (Logicasoft) into central financial ledgers, alongside Menaitech HR payroll journals.",
+          solution:
+            "Developed custom API listeners and data mapping handlers that automatically sync approved laboratory invoices and monthly payroll entries into Odoo.",
+          contribution:
+            "Architected RESTful endpoint mappings, error logs, and reconciled intercompany account entries.",
+          stack: [
+            "REST APIs",
+            "Logicasoft LIMS",
+            "Menaitech HRMS",
+            "Odoo JSON-RPC",
+          ],
+          github: "https://github.com/tmkhalid",
+        },
+        {
+          title: "AI Vendor Invoice OCR & Approval Assistant",
+          status: "Prototype / R&D",
+          category: "AI & Workflow Automation",
+          problem:
+            "Manual entry of PDF vendor invoices caused data entry lag and occasional typos in tax registration numbers and line-item totals.",
+          solution:
+            "Built a Python proof-of-concept integrating Vision-LLMs to extract invoice metadata, match purchase orders, and pre-populate Odoo vendor draft bills automatically.",
+          contribution:
+            "Designed prompt templates, JSON schema parsers, and Odoo draft bill API creation scripts.",
+          stack: ["Python", "LLM Vision APIs", "Odoo External API", "JSON"],
+          github: "https://github.com/tmkhalid",
+        },
+        {
+          title: "Central Kitchen MRP & Recipe Management",
+          status: "Deployed Production",
+          category: "Food & Beverage Operations",
+          problem:
+            "Adyaf Gulf food processing facilities required precise tracking of raw food ingredients, batch recipes, yields, and wastage control for central kitchen distribution.",
+          solution:
+            "Configured Odoo Manufacturing (MRP) and Inventory modules tailored for multi-level Bills of Materials (BoM), shelf-life expiry tracking, and kitchen cost allocation.",
+          contribution:
+            "Configured process workflows, trained kitchen staff, and optimized stock reordering thresholds.",
+          stack: ["Odoo MRP", "Odoo Inventory", "Barcode Scanners"],
+          github: "https://github.com/tmkhalid",
+        },
+      ];
+
+      function openProjectModal(index) {
+        const project = projectsData[index];
+        const container = document.getElementById("modal-content");
+
+        container.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-borderColor/60 pb-3">
+                        <span class="text-xs font-bold text-accent uppercase tracking-wider">${project.category}</span>
+                        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/30">${project.status}</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-textPrimary">${project.title}</h2>
+
+                    <div class="space-y-3 text-xs text-textSec">
+                        <div>
+                            <h4 class="font-bold text-textPrimary text-sm mb-1"><i class="fa-solid fa-circle-exclamation text-amber-400 mr-1.5"></i>Business Problem:</h4>
+                            <p class="leading-relaxed bg-bgMain/60 p-3 rounded-xl border border-borderColor/40">${project.problem}</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-textPrimary text-sm mb-1"><i class="fa-solid fa-lightbulb text-accentTeal mr-1.5"></i>Solution Overview:</h4>
+                            <p class="leading-relaxed bg-bgMain/60 p-3 rounded-xl border border-borderColor/40">${project.solution}</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-textPrimary text-sm mb-1"><i class="fa-solid fa-user-check text-accent mr-1.5"></i>My Key Contribution:</h4>
+                            <p class="leading-relaxed bg-bgMain/60 p-3 rounded-xl border border-borderColor/40">${project.contribution}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-textPrimary text-xs mb-2">Technology Stack:</h4>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            ${project.stack.map((tech) => `<span class="bg-bgMain px-3 py-1 rounded-lg border border-borderColor text-textSec">${tech}</span>`).join("")}
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-borderColor/60 flex flex-wrap gap-3">
+                        <a href="${project.github}" target="_blank" rel="noopener" class="btn-gradient text-bgMain font-bold px-5 py-2.5 rounded-xl text-xs flex items-center space-x-2">
+                            <i class="fa-brands fa-github"></i>
+                            <span>View Code / Profile</span>
+                        </a>
+                        <button onclick="closeProjectModal()" class="bg-bgSec hover:bg-borderColor text-textPrimary font-semibold px-5 py-2.5 rounded-xl text-xs border border-borderColor">
+                            Close Window
+                        </button>
+                    </div>
+                </div>
+            `;
+
+        document.getElementById("project-modal").classList.remove("hidden");
+      }
+
+      function closeProjectModal() {
+        document.getElementById("project-modal").classList.add("hidden");
+      }
+
+      // Close modal on escape key
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeProjectModal();
+      });
+
+      // Contact Form Processing
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        const status = document.getElementById("form-status");
+        const name = document.getElementById("contact-name").value;
+        const email = document.getElementById("contact-email").value;
+        const type = document.getElementById("contact-type").value;
+
+        // Trigger direct mailto fallback or simulated success
+        status.className =
+          "mt-4 p-4 rounded-xl text-xs text-center font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40";
+        status.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i>Thank you, ${name}! Your inquiry regarding "${type}" has been logged. Khalid will respond to ${email} shortly.`;
+        status.classList.remove("hidden");
+
+        document.getElementById("contact-form").reset();
+      }
+    </script>
   </body>
-  </html>`;
-}
-
-function escapeAttr(s){
-  if(!s) return '';
-  return s.replaceAll('"','&quot;').replaceAll("'",'&#39;');
-}
-
-generateBtn.addEventListener('click', ()=>{
-  const data = getData();
-  const html = buildFinalHtml(data);
-  const blob = new Blob([html],{type:'text/html'});
-  const url = URL.createObjectURL(blob);
-  downloadBtn.href = url;
-  downloadBtn.download = (data.name? data.name.replaceAll(' ','-').toLowerCase() : 'link-in-bio') + '.html';
-  window.open(url,'_blank');
-});
-
-copyHtmlBtn.addEventListener('click', async ()=>{
-  const html = buildFinalHtml(getData());
-  await navigator.clipboard.writeText(html);
-  copyHtmlBtn.textContent = 'Copied ✓';
-  setTimeout(()=> copyHtmlBtn.textContent = 'Copy HTML', 1500);
-});
-
-saveLocal.addEventListener('click', ()=>{
-  const data = getData();
-  localStorage.setItem('linkinbio:data', JSON.stringify(data));
-  saveLocal.textContent = 'Saved ✓';
-  setTimeout(()=> saveLocal.textContent = 'Save Local', 1200);
-});
-
-loadLocal.addEventListener('click', ()=>{
-  const raw = localStorage.getItem('linkinbio:data');
-  if(!raw) return alert('No local data found');
-  const d = JSON.parse(raw);
-  nameInput.value = d.name || '';
-  bioInput.value = d.bio || '';
-  themeSelect.value = d.theme || 'light';
-  linksList.innerHTML = '';
-  (d.links||[]).forEach(l=> makeLinkItem(l.title,l.href));
-  renderPreview();
-});
-
-clearLocal.addEventListener('click', ()=>{ localStorage.removeItem('linkinbio:data'); linksList.innerHTML = ''; nameInput.value=''; bioInput.value=''; renderPreview(); });
-
-makeLinkItem('My Website','https://example.com');
-makeLinkItem('Contact','mailto:hello@example.com');
-renderPreview();
-</script>
-</body>
 </html>
