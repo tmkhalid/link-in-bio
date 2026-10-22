@@ -143,10 +143,10 @@
       id="main-header"
     >
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex min-w-0 items-center justify-between"
       >
         <!-- Brand Logo -->
-        <a href="#" class="flex items-center gap-3 group">
+        <a href="#" class="flex min-w-0 flex-1 items-center gap-3 group">
           <div
             class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center font-extrabold text-navy-950 text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform flex-shrink-0"
           >
@@ -214,7 +214,7 @@
         <!-- Mobile Menu Hamburger Button -->
         <button
           onclick="toggleMobileMenu()"
-          class="md:hidden p-2 text-brand-secondary hover:text-white text-2xl focus:outline-none"
+          class="md:hidden flex-shrink-0 p-2 text-brand-secondary hover:text-white text-2xl focus:outline-none"
           aria-label="Toggle Navigation"
         >
           <i class="fa-solid fa-bars" id="menu-icon"></i>
@@ -223,7 +223,7 @@
 
       <!-- Mobile Dropdown Navigation -->
       <div
-        class="hidden md:hidden bg-navy-900/98 border-b border-navy-border px-6 py-6 space-y-4 shadow-2xl"
+        class="hidden md:hidden w-full max-h-[calc(100vh-5rem)] overflow-y-auto bg-navy-900/98 border-b border-navy-border px-6 py-6 space-y-4 shadow-2xl"
         id="mobile-menu"
       >
         <a
